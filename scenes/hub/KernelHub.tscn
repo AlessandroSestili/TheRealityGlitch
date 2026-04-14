@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/KernelHub.gd" id="1"]
+
+[node name="KernelHub" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.04, 0.04, 0.08, 1)
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -280.0
+offset_right = 250.0
+offset_bottom = 280.0
+
+[node name="TitleLabel" type="Label" parent="VBox"]
+text = "[ KERNEL HUB ]"
+horizontal_alignment = 1
+
+[node name="FragmentsLabel" type="Label" parent="VBox"]
+unique_name_in_owner = true
+text = "Data Fragments: 0"
+horizontal_alignment = 1
+
+[node name="Separator1" type="HSeparator" parent="VBox"]
+
+[node name="RamLabel" type="Label" parent="VBox"]
+unique_name_in_owner = true
+text = "RAM Lv.0 — Slots: 3"
+
+[node name="UpgradeRAM" type="Button" parent="VBox"]
+text = "▲ Update RAM  (100 frammenti)"
+
+[node name="Separator2" type="HSeparator" parent="VBox"]
+
+[node name="CpuLabel" type="Label" parent="VBox"]
+unique_name_in_owner = true
+text = "CPU Lv.0 — Cooldown: 100%"
+
+[node name="UpgradeCPU" type="Button" parent="VBox"]
+text = "▲ Update CPU  (150 frammenti)"
+
+[node name="Separator3" type="HSeparator" parent="VBox"]
+
+[node name="FirmwareLabel" type="Label" parent="VBox"]
+unique_name_in_owner = true
+text = "Firmware Lv.0 — Instability ×1.0"
+
+[node name="UpgradeFirmware" type="Button" parent="VBox"]
+text = "▲ Stable Firmware  (120 frammenti)"
+
+[node name="Separator4" type="HSeparator" parent="VBox"]
+
+[node name="StartRun" type="Button" parent="VBox"]
+text = "▶▶ INIZIA RUN"
+
+[connection signal="pressed" from="VBox/UpgradeRAM" to="." method="_on_UpgradeRAM_pressed"]
+[connection signal="pressed" from="VBox/UpgradeCPU" to="." method="_on_UpgradeCPU_pressed"]
+[connection signal="pressed" from="VBox/UpgradeFirmware" to="." method="_on_UpgradeFirmware_pressed"]
+[connection signal="pressed" from="VBox/StartRun" to="." method="_on_StartRun_pressed"]

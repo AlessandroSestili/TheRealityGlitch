@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/snippets/RicochetSnippet.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+snippet_name = "Ricochet"
+description = "I proiettili rimbalzano sulle pareti 2 volte.\nAumenta instabilità di 3 per sparo."
+instability_cost = 3.0
+max_bounces = 2

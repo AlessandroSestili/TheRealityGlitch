@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/rooms/CombatRoom.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/BaseEnemyScene.tscn" id="1"]
+
+[node name="CombatRoom" type="Node2D"]
+script = ExtResource("2")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="WallTop" type="StaticBody2D" parent="Walls" groups=["wall"]]
+position = Vector2(0, -180)
+
+[node name="CollisionTop" type="CollisionShape2D" parent="Walls/WallTop"]
+
+[node name="WallBottom" type="StaticBody2D" parent="Walls" groups=["wall"]]
+position = Vector2(0, 180)
+
+[node name="CollisionBottom" type="CollisionShape2D" parent="Walls/WallBottom"]
+
+[node name="WallLeft" type="StaticBody2D" parent="Walls" groups=["wall"]]
+position = Vector2(-320, 0)
+
+[node name="CollisionLeft" type="CollisionShape2D" parent="Walls/WallLeft"]
+
+[node name="WallRight" type="StaticBody2D" parent="Walls" groups=["wall"]]
+position = Vector2(320, 0)
+
+[node name="CollisionRight" type="CollisionShape2D" parent="Walls/WallRight"]
+
+[node name="EnemySpawns" type="Node2D" parent="."]
+
+[node name="Spawn1" type="Marker2D" parent="EnemySpawns"]
+position = Vector2(-200, -100)
+
+[node name="Spawn2" type="Marker2D" parent="EnemySpawns"]
+position = Vector2(200, -100)
+
+[node name="Spawn3" type="Marker2D" parent="EnemySpawns"]
+position = Vector2(0, 120)
+
+[node name="Spawn4" type="Marker2D" parent="EnemySpawns"]
+position = Vector2(-150, 100)
+
+[node name="ExitDoor" type="Area2D" parent="."]
+position = Vector2(0, -160)
+
+[node name="ExitCollision" type="CollisionShape2D" parent="ExitDoor"]
+
+[node name="ExitLabel" type="Label" parent="ExitDoor"]
+position = Vector2(-30, -20)
+text = "[ EXIT ]"
+visible = false

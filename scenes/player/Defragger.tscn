@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/Defragger.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player/Bullet.tscn" id="2"]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 8.0
+height = 20.0
+
+[sub_resource type="ShaderMaterial" id="2"]
+
+[node name="Defragger" type="CharacterBody2D"]
+script = ExtResource("1")
+bullet_scene = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="DebugShape" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-8, -10, 8, -10, 8, 10, -8, 10)
+color = Color(0.2, 0.8, 0.4, 1)
+
+[node name="ShootOrigin" type="Marker2D" parent="."]
+position = Vector2(16, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="HurtFlash" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="HurtFlash"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1, 0, 0, 0.35)
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

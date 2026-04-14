@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/Terminal.gd" id="1"]
+
+[node name="Terminal" type="CanvasLayer" groups=["terminal"]]
+layer = 10
+script = ExtResource("1")
+
+[node name="Container" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -220.0
+offset_right = 350.0
+offset_bottom = 220.0
+
+[node name="VBox" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Container/VBox"]
+text = "[ TERMINAL — SCM Interface ]"
+
+[node name="InstabilityBar" type="ProgressBar" parent="Container/VBox"]
+unique_name_in_owner = true
+min_value = 0.0
+max_value = 100.0
+value = 0.0
+
+[node name="HSplit" type="HSplitContainer" parent="Container/VBox"]
+size_flags_vertical = 3
+
+[node name="LeftVBox" type="VBoxContainer" parent="Container/VBox/HSplit"]
+
+[node name="AvailableLabel" type="Label" parent="Container/VBox/HSplit/LeftVBox"]
+text = "Available Snippets"
+
+[node name="SnippetList" type="ItemList" parent="Container/VBox/HSplit/LeftVBox"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+
+[node name="EquipButton" type="Button" parent="Container/VBox/HSplit/LeftVBox"]
+text = "▶ Equip"
+
+[node name="RightVBox" type="VBoxContainer" parent="Container/VBox/HSplit"]
+
+[node name="EquippedLabel" type="Label" parent="Container/VBox/HSplit/RightVBox"]
+text = "Equipped Snippets"
+
+[node name="EquippedList" type="ItemList" parent="Container/VBox/HSplit/RightVBox"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+
+[node name="UnequipButton" type="Button" parent="Container/VBox/HSplit/RightVBox"]
+text = "◀ Unequip"
+
+[node name="DescLabel" type="Label" parent="Container/VBox"]
+unique_name_in_owner = true
+text = "Seleziona uno Snippet per i dettagli."
+autowrap_mode = 3
+
+[connection signal="item_selected" from="Container/VBox/HSplit/LeftVBox/SnippetList" to="." method="_on_SnippetList_item_selected"]
+[connection signal="pressed" from="Container/VBox/HSplit/LeftVBox/EquipButton" to="." method="_on_EquipButton_pressed"]
+[connection signal="pressed" from="Container/VBox/HSplit/RightVBox/UnequipButton" to="." method="_on_UnequipButton_pressed"]

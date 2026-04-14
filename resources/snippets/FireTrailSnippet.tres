@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/snippets/FireTrailSnippet.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+snippet_name = "Fire Trail"
+description = "Al dash, lascia una scia di fuoco nell'arena.\nAumenta instabilità di 5 per attivazione."
+instability_cost = 5.0
+trail_duration = 0.6
